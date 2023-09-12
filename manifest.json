@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Consultant Verifier",
+  "version": "1.0",
+  "description": "A basic Chrome extension to verify a LinkedIn person presence in Granton Monday.",
+  "permissions": [
+    "storage",
+    "tabs",
+    "activeTab",
+    "webNavigation"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "48.png",
+      "64": "64.png",
+      "128": "128.png",
+      "256": "256.png"
+      
+    }
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+
+  "options_page": "options.html",
+
+
+  "host_permissions": [
+    "https://www.linkedin.com/*"
+  ]
+}
+
+
