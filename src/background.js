@@ -23,10 +23,8 @@ async function fetchDataFromAPI(apiKey, linkedInURL) {
 
     try {
         const response = await fetch(endpoint, requestOptions);
-        if (response.status === 200) {
-            return true;
-        } 
-        return false;
+        return response.status === 200;
+
     } catch (error) {
         console.error("Error during fetch:", error);
         return false;
@@ -41,20 +39,20 @@ function setIconBasedOnLinkedInUrl(tabId, url) {
 
             if (mondayResponse) {
                 chrome.action.setIcon({
-                    path: 'green.png',
+                    path: '../media/green.png',
                     tabId: tabId
                 });
             } else {
                 // Setting the icon to red when there's no match
                 chrome.action.setIcon({
-                    path: 'red.png',
+                    path: '../media/red.png',
                     tabId: tabId
                 });
             }
         } else {
             // Reset to default icon when navigating to non-LinkedIn pages or when history state is updated
             chrome.action.setIcon({
-                path: '128.png',
+                path: '../media/128.png',
                 tabId: tabId
             });
         }

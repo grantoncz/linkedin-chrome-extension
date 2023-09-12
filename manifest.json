@@ -10,21 +10,21 @@
     "webNavigation"
   ],
   "action": {
-    "default_popup": "popup.html",
+    "default_popup": "html/popup.html",
     "default_icon": {
-      "48": "48.png",
-      "64": "64.png",
-      "128": "128.png",
-      "256": "256.png"
+      "48": "media/48.png",
+      "64": "media/64.png",
+      "128": "media/128.png",
+      "256": "media/256.png"
       
     }
   },
   "background": {
-    "service_worker": "background.js",
+    "service_worker": "src/background.js",
     "type": "module"
   },
 
-  "options_page": "options.html",
+  "options_page": "html/options.html",
 
 
   "host_permissions": [
