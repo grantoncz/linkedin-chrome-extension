@@ -8,6 +8,7 @@ function saveOptions() {
         setTimeout(function() {
             status.textContent = '';
         }, 2000);
+        chrome.action.setBadgeText({text: ""});
     });
 }
 
@@ -19,6 +20,8 @@ function restoreOptions() {
         }
     });
 }
+
+
 
 // Add event listeners
 document.addEventListener('DOMContentLoaded', restoreOptions);
