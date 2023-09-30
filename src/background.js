@@ -84,12 +84,12 @@ function setIconBasedOnLinkedInUrl(tabId, url) {
                     path: '../media/green.png',
                     tabId: tabId
                 });
-            } else if (mondayResponse.light == "green") {
+            } else if (mondayResponse.light == "green") { //TODO fix according to code analyses
                 chrome.action.setIcon({
                     path: '../media/red.png',
                     tabId: tabId
                 });
-            } else if (mondayResponse.light == "yellow") {
+            } else if (mondayResponse.light == "yellow") { //TODO fix according to code analyses
                 chrome.action.setIcon({
                     path: '../media/yellow.png',
                     tabId: tabId
