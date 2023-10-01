@@ -4,8 +4,8 @@ async function fetchDataFromAPI(apiKey, linkedInURL) {
     myHeaders.append("Content-Type", "application/json");
 
     const payload = JSON.stringify({
-        "apiKey": apiKey,
-        "columnValue": linkedInURL
+        "api_key": apiKey,
+        "person_linkedin_url": linkedInURL
     });
 
     const requestOptions = {
@@ -15,7 +15,7 @@ async function fetchDataFromAPI(apiKey, linkedInURL) {
         redirect: 'follow'
     };
 
-    const endpoint = "https://127.0.0.1:8080";  // truncated for brevity
+    const endpoint = "http://pepavps.eu:9876/";  // truncated for brevity
     // const endpoint = "https://prod-51.northeurope.logic.azure.com:443/workflows/0a8ef88c62d14ff4a176b413fae055e0/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=dni_l7z1kjYSl6hQg3PEbYCBP7vbR15MGi1pMk4oD40";  // truncated for brevity
 
 
@@ -79,12 +79,13 @@ function setIconBasedOnLinkedInUrl(tabId, url) {
 
 
 
+
             if (mondayResponse == null) { //null znamena chybu, respektiva ne 200, takze cervena
                 chrome.action.setIcon({
-                    path: '../media/green.png',
+                    path: '../media/128.png',
                     tabId: tabId
                 });
-            } else if (mondayResponse.light == "green") { //TODO fix according to code analyses
+            } else if (mondayResponse.light == "red") { //TODO fix according to code analyses
                 chrome.action.setIcon({
                     path: '../media/red.png',
                     tabId: tabId
@@ -97,7 +98,7 @@ function setIconBasedOnLinkedInUrl(tabId, url) {
             } else {
                 // Setting the icon to red when there's no match
                 chrome.action.setIcon({
-                    path: '../media/green.png',
+                    path: '../media/error.png',
                     tabId: tabId
                 });
             }
