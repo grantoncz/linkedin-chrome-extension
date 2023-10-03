@@ -1,4 +1,4 @@
-async function fetchDataFromAPI(apiKey, linkedInURL) {
+function fetchDataFromAPI(apiKey, linkedInURL) {
 
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -22,9 +22,9 @@ async function fetchDataFromAPI(apiKey, linkedInURL) {
 
 
     try {
-        const response = await fetch(endpoint, requestOptions);
+        const response = fetch(endpoint, requestOptions);
         if (response.status === 200) {
-            return await response.json();  // Assuming the response data is in JSON format
+            return response.json();  // Assuming the response data is in JSON format
         }
         return null;
 
@@ -74,7 +74,7 @@ function setIconBasedOnLinkedInUrl(tabId, url) {
                 return false;
             }
 
-            let mondayResponse = await fetchDataFromAPI(data.apiKey, url); 
+            let mondayResponse = await fetchDataFromAPI(data.apiKey, url);
             console.info("linkedIn detected");
 
 
@@ -82,7 +82,7 @@ function setIconBasedOnLinkedInUrl(tabId, url) {
 
             if (mondayResponse == null) { //null znamena chybu, respektiva ne 200, takze cervena
                 chrome.action.setIcon({
-                    path: '../media/128.png',
+                    path: '../media/green.png',
                     tabId: tabId
                 });
             } else if (mondayResponse.light == "red") { //TODO fix according to code analyses
