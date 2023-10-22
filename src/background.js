@@ -1,4 +1,30 @@
- async function fetchDataFromAPI(apiKey, linkedInURL) {
+function escapeCzechCharacters(str) {
+    // Object mapping of Czech characters to their URL-safe encoding
+    const charMap = {
+        'ě': '%C4%9B',
+        'š': '%C5%A1',
+        'č': '%C4%8D',
+        'ř': '%C5%99',
+        'ž': '%C5%BE',
+        'ý': '%C3%BD',
+        'á': '%C3%A1',
+        'í': '%C3%AD',
+        'é': '%C3%A9',
+        'ó': '%C3%B3',
+        'ň': '%C5%88',
+        'ť': '%C5%A5',
+        'ď': '%C4%8F',
+        'ú': '%C3%BA',
+        'ů': '%C5%AF'
+    };
+
+    // Replace each character with its encoded counterpart
+    let escapedStr = str.split('').map(char => charMap[char] || char).join('');
+
+    return escapedStr;
+}
+
+async function fetchDataFromAPI(apiKey, linkedInURL) {
 
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -15,8 +41,9 @@
         redirect: 'follow'
     };
 
-    const endpoint = "http://pepavps.eu:9876/";  // truncated for brevity
-    // const endpoint = "https://prod-51.northeurope.logic.azure.com:443/workflows/0a8ef88c62d14ff4a176b413fae055e0/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=dni_l7z1kjYSl6hQg3PEbYCBP7vbR15MGi1pMk4oD40";  // truncated for brevity
+    // const endpoint = "http://127.0.0.1:8000/";  // truncated for brevity
+    // const endpoint = "http://pepavps.eu:9876/";  // truncated for brevity
+    const endpoint = "http://api-semafor.bnhyc9gzbhf0frcf.northeurope.azurecontainer.io";
 
     console.log("outbound request [endpoint]:", endpoint);
     console.log("outbound request [data]:", requestOptions);
