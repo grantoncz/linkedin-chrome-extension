@@ -7,9 +7,7 @@
     "storage",
     "tabs",
     "activeTab",
-    "webNavigation",
-    "notifications",
-    "webRequest"
+    "webNavigation"
   ],
   "action": {
     "default_popup": "html/popup.html",
